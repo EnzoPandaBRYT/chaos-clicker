@@ -281,6 +281,7 @@ A burst of 3 clicks each 5 seconds
 [On Player Click]"
 
 [node name="click_bomb" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.0276042

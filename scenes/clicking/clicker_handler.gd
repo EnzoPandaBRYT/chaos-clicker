@@ -72,7 +72,7 @@ func _process(delta: float) -> void:
 			x += 1
 			spawn_cursor()
 	
-	if Input.is_action_just_pressed("shop"):
+	if Input.is_action_just_pressed("shop") and GlobalVars.unlocked_shop:
 		AudioPlayer.open_menu_gui()
 		get_tree().change_scene_to_file("res://scenes/store/store.tscn")
 	
@@ -123,11 +123,20 @@ func _on_button_pressed() -> void:
 	else:
 		while click_burst_loop:
 			await get_tree().create_timer(0.1).timeout
-			GlobalVars.score += GlobalVars.click_power
+			GlobalVars.score += GlobalVars.click_power * Items.click_mult_power
+			GlobalVars.avg_score += GlobalVars.click_power * Items.click_mult_power
 			var rng = randi_range(0, 100-Items.click_bomb_chance)
 			if rng == 0 and Items.click_bomb_acquired > 0:
 				spawn_bomb()
-	
+			if Items.click_mult_power > Items.click_mult_max and Items.click_mult_acquired == 1:
+				Items.click_mult_power = floori(Items.click_mult_power)
+			
+			if (Items.click_mult_power + Items.click_mult_sum) < Items.click_mult_max and Items.click_mult_acquired > 1:
+				Items.click_mult_power += Items.click_mult_sum
+				
+			if Items.click_mult_power < Items.click_mult_max and Items.click_mult_acquired == 1:
+				Items.click_mult_power += Items.click_mult_sum
+			
 	if Items.click_mult_power > Items.click_mult_max and Items.click_mult_acquired == 1:
 		Items.click_mult_power = floori(Items.click_mult_power)
 	
@@ -146,10 +155,6 @@ func _on_button_pressed() -> void:
 	
 	GlobalVars.score += GlobalVars.click_power * Items.click_mult_power
 	GlobalVars.avg_score += GlobalVars.click_power * Items.click_mult_power
-	print("\nItems.click_mult_power: " + str(Items.click_mult_power))
-	print("Items.click_mult_max: " + str(Items.click_mult_max))
-	print("Items.click_mult_sum: " + str(Items.click_mult_sum))
-	print("Items.click_mult_acquired: " + str(Items.click_mult_acquired))
 
 func ghost_click():
 	GlobalVars.score += GlobalVars.click_power * Items.click_mult_power
@@ -174,11 +179,12 @@ func ghost_click():
 		4:
 			GlobalVars.click_storage += 1
 			if GlobalVars.click_storage == 2:
-				GlobalVars.sGlobalVars.score += GlobalVars.click_power * Items.click_mult_power
+				GlobalVars.score += GlobalVars.click_power * Items.click_mult_power
 				GlobalVars.click_storage = 0
 		5:
 			GlobalVars.click_storage = 0
 			GlobalVars.score += GlobalVars.click_power * Items.click_mult_power
+			
 	
 	if GlobalVars.click_burst_ready and Items.click_burst_acquired < 8:
 		GlobalVars.click_burst_ready = false
