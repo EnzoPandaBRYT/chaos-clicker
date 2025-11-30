@@ -1,0 +1,375 @@
+[gd_scene load_steps=14 format=3 uid="uid://0uh2fdpehx1h"]
+
+[ext_resource type="Script" uid="uid://i1kw4k7tbssj" path="res://scenes/store/store.gd" id="1_756f3"]
+[ext_resource type="Script" uid="uid://brs5eijtl0hmk" path="res://gui/store/skills/plus_one_initial.gd" id="2_7b83j"]
+[ext_resource type="PackedScene" uid="uid://ovudvf25j22i" path="res://gui/scenes/score.tscn" id="4_4wl1u"]
+[ext_resource type="Script" uid="uid://c4irxg51ka4qy" path="res://gui/store/skills/passive_miner.gd" id="4_aloq4"]
+[ext_resource type="FontFile" uid="uid://c1idj0ctf0cw0" path="res://assets/fonts/ARCADECLASSIC.TTF" id="4_nhl0m"]
+[ext_resource type="Script" uid="uid://bua7loieq8lf0" path="res://gui/store/skills/click_combo.gd" id="5_aloq4"]
+[ext_resource type="Script" uid="uid://cxej72eymeh3v" path="res://gui/store/skills/ghost_click.gd" id="6_yimk0"]
+[ext_resource type="Script" uid="uid://uim6426pfot3" path="res://gui/store/skills/click_burst.gd" id="7_xbntn"]
+[ext_resource type="Script" uid="uid://5by3vtyrlnn8" path="res://gui/store/skills/click_bomb.gd" id="8_ler8j"]
+[ext_resource type="Script" uid="uid://l4pbvrnpgqty" path="res://gui/store/skills/click_mult.gd" id="9_7f1bx"]
+
+[sub_resource type="Animation" id="Animation_0e4xk"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background/rect:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.365357, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background/rect:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.425312, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background/rect:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.350992, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background/rect:color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_q6c4a"]
+resource_name = "rgb_background"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background/rect:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.365357, -0.25, 0, 0.25, 0, 0.270349, -0.25, 0, 0.25, 0, 0.481058, -0.25, 0, 0.25, 0, 0.520466, -0.25, 0, 0.25, 0, 0.420666, -0.25, 0, 0.25, 0, 0.365357, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background/rect:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.425312, -0.25, 0, 0.25, 0, 0.426137, -0.25, 0, 0.25, 0, 0.352739, -0.25, 0, 0.25, 0, 0.359616, -0.25, 0, 0.25, 0, 0.415271, -0.25, 0, 0.25, 0, 0.425312, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background/rect:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.350992, -0.25, 0, 0.25, 0, 0.523261, -0.25, 0, 0.25, 0, 0.492853, -0.25, 0, 0.25, 0, 0.315307, -0.25, 0, 0.25, 0, 0.246874, -0.25, 0, 0.25, 0, 0.350992, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background/rect:color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ig5bt"]
+_data = {
+&"RESET": SubResource("Animation_0e4xk"),
+&"rgb_background": SubResource("Animation_q6c4a")
+}
+
+[node name="store" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_756f3")
+
+[node name="background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="rect" type="ColorRect" parent="background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.365357, 0.425312, 0.350992, 1)
+
+[node name="plus_one_power" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 714.0
+offset_right = 558.0
+offset_bottom = 815.0
+alignment = 1
+script = ExtResource("2_7b83j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="plus_one_power"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_nhl0m")
+theme_override_font_sizes/font_size = 40
+text = "0 Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="plus_one_power"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Inflation
++1 per Click"
+
+[node name="passive_miner" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1405.0
+offset_top = 913.0
+offset_right = 1859.0
+offset_bottom = 1014.0
+alignment = 1
+script = ExtResource("4_aloq4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="passive_miner"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_nhl0m")
+theme_override_font_sizes/font_size = 40
+text = "0 Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="passive_miner"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Passive Miner
++1 Point/s"
+
+[node name="click_combo" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 763.0
+offset_right = 1197.0
+offset_bottom = 890.0
+alignment = 1
+script = ExtResource("5_aloq4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="click_combo"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_nhl0m")
+theme_override_font_sizes/font_size = 40
+text = "0 Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="click_combo"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Delayed Mouse
++1 each FIVE clicks"
+
+[node name="ghost_click" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0166667
+anchor_top = -0.0546296
+anchor_right = -0.0166667
+anchor_bottom = 0.0037037
+offset_left = 1440.0
+offset_top = 134.0
+offset_right = 1894.0
+offset_bottom = 235.0
+alignment = 1
+script = ExtResource("6_yimk0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ghost_click"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_nhl0m")
+theme_override_font_sizes/font_size = 40
+text = "0 Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ghost_click"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Residual Appearance Clicks
++1 Click/5 sec
+[Counts as Player Clicks]"
+
+[node name="click_burst" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0276042
+anchor_top = -0.0592593
+anchor_right = -0.003125
+anchor_bottom = -0.0592593
+offset_left = 1435.0
+offset_top = 324.0
+offset_right = 1889.0
+offset_bottom = 488.0
+alignment = 1
+script = ExtResource("7_xbntn")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="click_burst"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_nhl0m")
+theme_override_font_sizes/font_size = 40
+text = "0 Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="click_burst"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "NERF
+A burst of 3 clicks each 5 seconds
+[On Player Click]"
+
+[node name="click_bomb" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0276042
+anchor_top = 0.115741
+anchor_right = -0.003125
+anchor_bottom = 0.115741
+offset_left = 1435.0
+offset_top = 324.0
+offset_right = 1889.0
+offset_bottom = 488.0
+alignment = 1
+script = ExtResource("8_ler8j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="click_bomb"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_nhl0m")
+theme_override_font_sizes/font_size = 40
+text = "0 Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="click_bomb"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Click Bomb
+1% of chance to spawn
+a bomb with 1K Clicks"
+
+[node name="click_mult" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0442708
+anchor_top = 0.491667
+anchor_right = 0.305208
+anchor_bottom = 0.643519
+alignment = 1
+script = ExtResource("9_7f1bx")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="click_mult"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_nhl0m")
+theme_override_font_sizes/font_size = 40
+text = "0 Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="click_mult"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Click Mult
++10% Points each Click!
+[Up to +50%]"
+
+[node name="go_back" type="Button" parent="."]
+top_level = true
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.774
+anchor_right = 0.519
+anchor_bottom = 0.791
+offset_left = -934.0
+offset_top = 158.08
+offset_right = -776.48
+offset_bottom = 207.72
+theme_override_font_sizes/font_size = 50
+text = "Go Back"
+
+[node name="gui" parent="." instance=ExtResource("4_4wl1u")]
+
+[node name="background_anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ig5bt")
+}
+
+[connection signal="pressed" from="plus_one_power/Button" to="plus_one_power" method="_on_button_pressed"]
+[connection signal="pressed" from="passive_miner/Button" to="passive_miner" method="_on_button_pressed"]
+[connection signal="pressed" from="click_combo/Button" to="click_combo" method="_on_button_pressed"]
+[connection signal="pressed" from="ghost_click/Button" to="ghost_click" method="_on_button_pressed"]
+[connection signal="pressed" from="click_burst/Button" to="click_burst" method="_on_button_pressed"]
+[connection signal="pressed" from="click_bomb/Button" to="click_bomb" method="_on_button_pressed"]
+[connection signal="pressed" from="click_mult/Button" to="click_mult" method="_on_button_pressed"]
+[connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7ps5o4l11dip"]
+
+[ext_resource type="Script" uid="uid://cuicl455b1xd" path="res://scenes/clicking/clicker_handler.gd" id="1_q6c4a"]
+[ext_resource type="FontFile" uid="uid://bu2sqh8xfsngc" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="3_ig5bt"]
+[ext_resource type="PackedScene" uid="uid://ovudvf25j22i" path="res://gui/scenes/score.tscn" id="3_q6c4a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ecl7i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ii1nm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7obxr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tph31"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_q6c4a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="background" type="CanvasLayer" parent="."]
+
+[node name="rect" type="ColorRect" parent="background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39892, 0.405672, 0.411429, 1)
+
+[node name="button" type="Button" parent="background"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_ig5bt")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ecl7i")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ii1nm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7obxr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tph31")
+text = "Click Me!"
+
+[node name="open_store" type="Button" parent="background"]
+top_level = true
+z_index = 99
+anchors_preset = -1
+anchor_left = 0.00625
+anchor_top = 0.856481
+anchor_right = 0.141667
+anchor_bottom = 0.989815
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Open Store
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="gui" parent="." instance=ExtResource("3_q6c4a")]
+
+[node name="score" parent="gui" index="0"]
+anchors_preset = -1
+anchor_left = 0.363542
+anchor_top = 0.452778
+anchor_right = 0.636458
+anchor_bottom = 0.547222
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 8
+size_flags_vertical = 6
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="background/button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="background/open_store" to="." method="_on_open_store_pressed"]
+
+[editable path="gui"]

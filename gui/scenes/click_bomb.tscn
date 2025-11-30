@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1t668djoq2vf"]
+
+[ext_resource type="Texture2D" uid="uid://cinpf7574lxbf" path="res://assets/items/golden_bomb.png" id="1_gpgwv"]
+[ext_resource type="Script" uid="uid://cb7dgctahjpr5" path="res://gui/scripts/click_bomb_movement.gd" id="1_mnpmh"]
+[ext_resource type="Texture2D" uid="uid://thm5gq1yhqj2" path="res://assets/items/explosion_frame.png" id="2_hq4xl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw2t4"]
+atlas = ExtResource("1_gpgwv")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgj6r"]
+atlas = ExtResource("2_hq4xl")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1p5lx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw2t4")
+}],
+"loop": false,
+"name": &"bomb",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgj6r")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_jw2t4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_hq4xl"]
+resource_name = "fade_out"
+length = 0.25
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.125, 0, 0.125, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kgj6r"]
+_data = {
+&"RESET": SubResource("Animation_jw2t4"),
+&"fade_out": SubResource("Animation_hq4xl")
+}
+
+[node name="click_bomb" type="Node2D"]
+script = ExtResource("1_mnpmh")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1p5lx")
+animation = &"bomb"
+autoplay = "bomb"
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 63.0
+offset_bottom = 64.0
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kgj6r")
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
